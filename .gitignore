@@ -1,0 +1,7 @@
+*.txt
+*.xml
+*.json
+
+Help
+Modules/*
+!/Modules/Custom.*
