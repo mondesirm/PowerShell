@@ -1,10 +1,8 @@
 New-Module -Name Posh -ScriptBlock {
-	function Get-PoshShell { oh-my-posh get shell }
-	function Install-PoshFont { oh-my-posh font install }
-	function Get-PoshThemes { (Get-ChildItem $env:POSH_THEMES_PATH\*.omp.json).BaseName -replace '\.omp$' }
+	function Get-PoshThemeList { (Get-ChildItem $env:POSH_THEMES_PATH\*.omp.json).BaseName -replace '\.omp$' }
 
 	function Set-PoshTheme($theme, $shell = 'pwsh') {
-		$themes = Get-PoshThemes
+		$themes = Get-PoshThemeList
 
 		if (!$theme) {
 			$theme = New-ListBox $themes 'Select a theme'

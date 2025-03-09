@@ -12,7 +12,6 @@ New-Module -Name Spicetify -ScriptBlock {
 			Write-Host 'Theme unchanged' -ForegroundColor Cyan
 		} elseif ($themes -contains $theme) {
 			spicetify config current_theme $theme
-			if ($theme -and $psEditor) { $psEditor.Window.ShowInformationMessage("Spicetify theme set to: $theme") }
 		} else {
 			Write-Host 'Invalid theme name' -ForegroundColor Red
 			Write-Host "Available themes: $($themes -join ', ')" -ForegroundColor Yellow
@@ -23,11 +22,11 @@ New-Module -Name Spicetify -ScriptBlock {
 
 		if (!$scheme) { $scheme = New-ListBox $schemes 'Select a color scheme' "$(spicetify -c | Split-Path)\Themes\$theme" }
 
-		if ($theme -eq (spicetify config color_scheme)) {
+		if ($scheme -eq (spicetify config color_scheme)) {
 			Write-Host 'Color scheme unchanged' -ForegroundColor Cyan
 		} elseif ($schemes -contains $scheme) {
 			spicetify config color_scheme $scheme
-			if ($theme -and $psEditor) { $psEditor.Window.ShowInformationMessage("Spicetify color scheme set to: $scheme") }
+			if ($theme -and $psEditor) { $psEditor.Window.ShowInformationMessage("Spicetify theme and color scheme set to: $theme - $scheme") }
 		} else {
 			Write-Host 'Invalid color scheme name' -ForegroundColor Red
 			Write-Host "Available color schemes for $theme`: $($schemes -join ', ')" -ForegroundColor Yellow

@@ -1,4 +1,3 @@
-Import-Module PSReadLine
 Import-Module Custom.Tools
 Import-Folder Custom.Tools
 Import-Folder Custom.Theme
